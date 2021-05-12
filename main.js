@@ -46,44 +46,24 @@ submit.addEventListener("click", function () {
     console.log("Password Must be at least Eight Character!");
   }
 
-  //Lowercase letter condition check.
-  for (i = 0; i < passLength; i++) {
-    if (arr[i] >= "a" && arr[i] <= "z") {
-      count++;
+  //common function for Lowercase, Uppercase, Number condition
+  function condition(start, end, msg) {
+    for (i = 0; i < passLength; i++) {
+      if (arr[i] >= start && arr[i] <= end) {
+        count++;
+      }
     }
+    if (count > 0) {
+      check++;
+    } else {
+      console.log(msg);
+    }
+    count = 0;
   }
-  if (count > 0) {
-    check++;
-  } else {
-    console.log("Password Must Contain a Lowercase Character!");
-  }
-  count = 0;
 
-  //Uppercase letter condition check.
-  for (i = 0; i < passLength; i++) {
-    if (arr[i] >= "A" && arr[i] <= "Z") {
-      count++;
-    }
-  }
-  if (count > 0) {
-    check++;
-  } else {
-    console.log("Password Must Contain a Uppercase Character!");
-  }
-  count = 0;
-
-  //Number condition check.
-  for (i = 0; i < passLength; i++) {
-    if (arr[i] >= "0" && arr[i] <= "9") {
-      count++;
-    }
-  }
-  if (count > 0) {
-    check++;
-  } else {
-    console.log("Password Must Contain a Number!");
-  }
-  count = 0;
+  condition("a", "z", "Password Must Contain a Lowercase Character!");
+  condition("A", "Z", "Password Must Contain a Uppercase Character!");
+  condition("0", "9", "Password Must Contain a Number!");
 
   //Special character condition check.
   for (i = 0; i < passLength; i++) {
