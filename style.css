@@ -59,6 +59,10 @@ body {
 
 .input-group {
   text-align: center;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .input {
@@ -66,11 +70,11 @@ body {
   text-align: center;
   width: 70%;
   height: 35px;
-  margin: 10px auto;
   padding: 10px;
   color: #004e55;
   font-size: 25px;
   border: 2px solid gray;
+  display: inline-block;
 }
 
 input::placeholder {
@@ -83,11 +87,29 @@ input::placeholder {
   color: gray;
 }
 
-.input-img {
-  margin-top: 15px;
-  margin-left: -35px;
+.input-group::after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  background-image: url(images/shield-x.svg);
   position: absolute;
-  z-index: 99;
+  top: 0px;
+  right: 46px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-color: white;
+  box-sizing: border-box;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+}
+
+.input-img {
+  border: 2px solid gray;
+  display: inline-block;
+  height: 35px;
+  margin-left: -2px;
 }
 
 /* Bars for password strength */
