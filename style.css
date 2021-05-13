@@ -94,15 +94,14 @@ input::placeholder {
   background-image: url(images/shield-x.svg);
   position: absolute;
   top: 0px;
-  right: 46px;
+  right: 73px;
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
   background-color: white;
   box-sizing: border-box;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
-  border-right: 2px solid gray;
+  margin-right: 4px;
 }
 
 .input-img {
@@ -110,6 +109,8 @@ input::placeholder {
   display: inline-block;
   height: 35px;
   margin-left: -2px;
+  padding: 0px 2px;
+  cursor: pointer;
 }
 
 /* Bars for password strength */
@@ -170,5 +171,9 @@ input::placeholder {
 
   .conditions {
     padding: 0 50px;
+  }
+
+  .input-group::after {
+    right: 46px;
   }
 }
