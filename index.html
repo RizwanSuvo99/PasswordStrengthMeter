@@ -4,19 +4,74 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- custom css -->
+    <link rel="stylesheet" href="style.css" />
+    <title>PassWord Strength Meter</title>
   </head>
   <body>
-    <input type="password" class="password" />
+    <div class="container">
+      <div class="main">
 
-    <button class="show">Show</button>
+        <!-- Logo -->
+          <img src="images/logo.png" alt="logo" class="logo-img" />
 
-    <button class="hide">Hide</button>
+          <!-- Heading & Subheading -->
+          <h1 class="title">Password Strength Checker</h1>
+          <p class="muted">Enter your password below to check it's strength</p>
 
-    <button class="clear">clear</button>
+          <!-- Input field and validation icon-->
+          <div class="input-group">
+            <input
+              type="password"
+              class="input"
+              id="password"
+              placeholder="Type a password"
+            />
+            <img src="images/shield-x.svg" alt="eye" class="input-img" />
+          </div>
 
-    <button class="submit">Submit</button>
+          <!-- Bars for Password Strength -->
+          <div class="bars">
+            <div class="bar"></div>
+          </div>
 
-    <script src="main.js"></script>
+          <!-- Conditions for lowercase, uppercase, number & symbol -->
+          <div class="conditions">
+            <div class="condition-group">
+              <div class="condition-icon">
+                <img src="images/x.svg" alt="" class="condition-img" />
+              </div>
+              <p class="condition-text">Lowercase</p>
+            </div>
+            <div class="condition-group">
+              <div class="condition-icon">
+                <img src="images/x.svg" alt="" class="condition-img" />
+              </div>
+              <p class="condition-text">Uppercase</p>
+            </div>
+            <div class="condition-group">
+              <div class="condition-icon">
+                <img src="images/x.svg" alt="" class="condition-img" />
+              </div>
+              <p class="condition-text">Numbers</p>
+            </div>
+            <div class="condition-group">
+              <div class="condition-icon">
+                <img src="images/x.svg" alt="" class="condition-img" />
+              </div>
+              <p class="condition-text">Symbols</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Javascript -->
+    <!-- <script src="main.js"></script> -->
   </body>
 </html>
