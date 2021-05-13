@@ -9,17 +9,22 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 
 /* outer part design */
 
 .container {
   min-height: 100vh;
-  display: grid;
   background-color: #f6f8f9;
+  position: relative;
 }
 
 .main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 800px;
   width: 500px;
   margin: auto;
@@ -72,19 +77,10 @@ body {
   height: 35px;
   padding: 10px;
   color: #004e55;
-  font-size: 25px;
+  font-size: 16px;
   border: 2px solid gray;
   display: inline-block;
-}
-
-input::placeholder {
-  position: absolute;
-  font-size: 18px;
-  line-height: 35px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: gray;
+  line-height: 0px;
 }
 
 .input-group::after {
@@ -127,13 +123,13 @@ input::placeholder {
 /* Conditions for lowercase, uppercase, number & symbol */
 
 .conditions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   width: 100%;
   padding: 0px 80px;
   font-size: 14px;
   color: #a4bcc3;
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .condition-group {
@@ -146,6 +142,31 @@ input::placeholder {
 .condition-img {
   display: inline-block;
   margin-top: 5px;
+}
+
+/* Cross browser support */
+
+@supports selector(.input::placeholder) {
+  .input::placeholder {
+    position: absolute;
+    font-size: 18px;
+    line-height: 35px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: gray;
+  }
+}
+
+@supports (display: grid) {
+  .container {
+    display: grid;
+  }
+
+  .conditions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* for desktop: under 1400px */
