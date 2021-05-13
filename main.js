@@ -1,91 +1,62 @@
-//Declaring the variables.
-let pass = document.getElementsByClassName("password")[0];
-let show = document.getElementsByClassName("show")[0];
-let hide = document.getElementsByClassName("hide")[0];
-let clear = document.getElementsByClassName("clear")[0];
-let submit = document.getElementsByClassName("submit")[0];
+let pass = document.getElementById("password");
+let root = document.querySelector(":root");
+let inputImg = document.getElementById("input-img");
+let bar = document.getElementById("bar");
+let char = document.getElementById("char");
 
-//Common function for show hide
-function showHide(btn, type) {
-  btn.addEventListener("click", function () {
-    pass.setAttribute("type", type);
-  });
-}
-
-showHide(show, "text");
-showHide(hide, "password");
-
-//clear button js
-clear.addEventListener("click", function () {
-  pass.value = "";
+// Problem in this block of code
+inputImg.addEventListener("click", function () {
+  if ((inputImg.src = "images/eye-hide.png")) {
+    inputImg.setAttribute("src", "images/eye-show.png");
+    pass.setAttribute("type", "text");
+  } else {
+    inputImg.setAttribute("src", "images/eye-hide.png");
+    pass.setAttribute("type", "password");
+  }
 });
 
-//submit button js
-submit.addEventListener("click", function () {
-  //creating an array from each characters of input value.
-  let arr = [];
-  let char;
-  let passLength = pass.value.length;
-  for (let i = 0; i < passLength; i++) {
-    char = pass.value.slice(i, i + 1);
-    arr.push(char);
-  }
-  console.log(arr);
+pass.addEventListener("input", function () {
+  // root.style.setProperty("--display", "block");
 
-  //password validation code.
-
-  //declaring variables.
-  let check = 0;
-  let count = 0;
-  let i = 0;
-
-  //8 characters condition check.
-  if (passLength >= 8) {
-    check++;
-  } else {
-    console.log("Password Must be at least Eight Character!");
-  }
-
-  //common function for Lowercase, Uppercase, Number condition
-  function condition(start, end, msg) {
-    for (i = 0; i < passLength; i++) {
-      if (arr[i] >= start && arr[i] <= end) {
-        count++;
+  // This is for validation bar
+  let inputVal = pass.value;
+  char.innerHTML = inputVal.length + " characters";
+  switch (inputVal.length) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      bar.style.width = "25%";
+      bar.style.backgroundColor = "red";
+      break;
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+      bar.style.width = "50%";
+      bar.style.backgroundColor = "orange";
+      break;
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+      bar.style.width = "70%";
+      bar.style.backgroundColor = "#ffe77aff";
+      break;
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+      bar.style.width = "100%";
+      bar.style.backgroundColor = "#16c7a1";
+      break;
+    default:
+      if (inputVal.length >= 16) {
+        bar.style.width = "100%";
+        bar.style.backgroundColor = "#16c7a1";
+      } else {
+        bar.style.width = "100%";
+        bar.style.backgroundColor = "transparent";
       }
-    }
-    if (count > 0) {
-      check++;
-    } else {
-      console.log(msg);
-    }
-    count = 0;
-  }
-
-  condition("a", "z", "Password Must Contain a Lowercase Character!");
-  condition("A", "Z", "Password Must Contain a Uppercase Character!");
-  condition("0", "9", "Password Must Contain a Number!");
-
-  //Special character condition check.
-  for (i = 0; i < passLength; i++) {
-    if (
-      !(arr[i] >= "0" && arr[i] <= "9") &&
-      !(arr[i] >= "a" && arr[i] <= "z") &&
-      !(arr[i] >= "A" && arr[i] <= "Z")
-    ) {
-      count++;
-    }
-  }
-  if (count > 0) {
-    check++;
-  } else {
-    console.log("Password Must Contain a Special Character!");
-  }
-  count = 0;
-
-  //password validation
-  if (check == 5) {
-    console.log("Password accepted");
-  } else {
-    console.log("Password Not Accepted");
   }
 });
