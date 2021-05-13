@@ -15,7 +15,6 @@ body {
 
 .container {
   min-height: 100vh;
-  min-width: 100vw;
   display: grid;
   background-color: #f6f8f9;
 }
@@ -91,7 +90,7 @@ input::placeholder {
   z-index: 99;
 }
 
-/* Bars for password strenght */
+/* Bars for password strength */
 .bars {
   padding: 0px 15%;
 }
@@ -124,4 +123,30 @@ input::placeholder {
 .condition-img {
   display: inline-block;
   margin-top: 5px;
+}
+
+/* for desktop: under 1400px */
+@media only screen and (max-width: 1400px) {
+  .main {
+    height: 530px;
+    width: 350px;
+    padding: 20px;
+    background-size: 80%;
+  }
+
+  .logo-img {
+    margin: 20px auto;
+  }
+
+  .muted {
+    width: 80%;
+  }
+
+  .input {
+    width: 80%;
+  }
+
+  .conditions {
+    padding: 0 50px;
+  }
 }
