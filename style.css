@@ -1,6 +1,8 @@
 /* Default css */
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   outline: 0;
@@ -25,13 +27,9 @@ body {
 }
 
 .main {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   height: 800px;
   width: 500px;
-  margin: auto;
+  margin: 0 auto;
   padding: 20px 50px;
   background-color: #ffffff;
   background-image: url(images/bg.png);
@@ -39,6 +37,10 @@ body {
   background-position: bottom center;
   background-size: 100%;
   box-shadow: 0px 1px 10px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Logo, title & description */
@@ -50,66 +52,62 @@ body {
 }
 
 .title {
-  text-align: center;
-  font-weight: 500;
-  color: #004e55;
   font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #004e55;
 }
 
 .muted {
-  text-align: center;
-  font-size: 16px;
   width: 60%;
   margin: 0 auto;
+  font-size: 16px;
+  text-align: center;
   color: #a4bcc3;
 }
 
 /* Input field and validation icon */
 
 .input-group {
-  text-align: center;
-  position: relative;
-  margin: 10px;
   display: flex;
   justify-content: center;
-}
-
-.input {
+  margin: 10px;
   position: relative;
-  text-align: center;
-  width: 70%;
-  height: 35px;
-  padding: 10px;
-  color: #004e55;
-  font-size: 16px;
-  border: 2px solid gray;
-  display: inline-block;
-  line-height: 0px;
 }
 
 .input-group::after {
   content: "";
   width: 35px;
   height: 35px;
+  margin-right: 4px;
   background-image: url(images/shield-x.svg);
-  position: absolute;
-  top: 0px;
-  right: 73px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
-  box-sizing: border-box;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
-  margin-right: 4px;
+  position: absolute;
+  top: 0px;
+  right: 73px;
+}
+
+.input {
+  width: 70%;
+  height: 35px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  color: #004e55;
+  border: 2px solid gray;
+  line-height: 0px;
+  position: relative;
 }
 
 .input-img {
-  border: 2px solid gray;
-  display: inline-block;
   height: 35px;
   margin-left: -2px;
   padding: 0px 2px;
+  border: 2px solid gray;
   cursor: pointer;
 }
 
@@ -127,24 +125,22 @@ body {
 /* Conditions for lowercase, uppercase, number & symbol */
 
 .conditions {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
+  margin-top: 10px;
   padding: 0px 80px;
   font-size: 14px;
   color: #a4bcc3;
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .condition-group {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: auto;
 }
 
 .condition-img {
-  display: inline-block;
   margin-top: 5px;
 }
 
@@ -159,31 +155,6 @@ body {
 .input-img::selection,
 .condition-img::selection {
   background-color: transparent;
-}
-
-/* Cross browser support */
-
-@supports selector(.input::placeholder) {
-  .input::placeholder {
-    position: absolute;
-    font-size: 18px;
-    line-height: 35px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: gray;
-  }
-}
-
-@supports (display: grid) {
-  .container {
-    display: grid;
-  }
-
-  .conditions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 /* for desktop: under 1400px */
