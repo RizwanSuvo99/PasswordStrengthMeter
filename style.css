@@ -12,6 +12,10 @@ body {
   overflow: hidden;
 }
 
+::selection {
+  background-color: #16c7a1;
+}
+
 /* outer part design */
 
 .container {
@@ -142,6 +146,19 @@ body {
 .condition-img {
   display: inline-block;
   margin-top: 5px;
+}
+
+/* Custom Selection */
+
+.muted::selection,
+.condition-text::selection {
+  color: #004e55;
+}
+
+.logo-img::selection,
+.input-img::selection,
+.condition-img::selection {
+  background-color: transparent;
 }
 
 /* Cross browser support */
