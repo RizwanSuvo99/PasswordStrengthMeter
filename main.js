@@ -26,38 +26,12 @@ pass.addEventListener("input", function () {
   let passLength = pass.value.length;
   char.innerHTML = passLength + " characters";
 
-  // This is for validation bar
-  if (passLength == 0) {
-    bar.style.width = "0%";
-  } else if (passLength > 0 && passLength <= 4) {
-    bar.style.width = "25%";
-    bar.style.backgroundColor = "red";
-  } else if (passLength > 4 && passLength <= 8) {
-    bar.style.width = "50%";
-    bar.style.backgroundColor = "orange";
-  } else if (passLength > 9 && passLength <= 12) {
-    bar.style.width = "75%";
-    bar.style.backgroundColor = "#ffe77aff";
-  } else {
-    bar.style.width = "100%";
-    bar.style.backgroundColor = "#16c7a1";
-  }
-
-  //8 characters condition check.
-  let eightText = document.getElementById("eight");
-  if (passLength == 0) {
-    eightText.style.display = "none";
-  } else if (passLength >= 8) {
-    eightText.style.display = "none";
-  } else {
-    eightText.style.display = "block";
-  }
-
   // Lowercase, Uppercase, Number, Symbol
 
   // Declaring the variables
   let i, character;
   let count = 0;
+  let check = 0;
   let arr = [];
   let condText = document.getElementsByClassName("condition-text");
   let condImg = document.getElementsByClassName("condition-img");
@@ -67,7 +41,6 @@ pass.addEventListener("input", function () {
     character = pass.value.slice(i, i + 1);
     arr.push(character);
   }
-  console.log(arr);
 
   // This block is for lowercase letters.
   if (arr.length == 0) {
@@ -85,6 +58,7 @@ pass.addEventListener("input", function () {
     } else {
       condText[0].style.color = "rgb(22, 199, 161)";
       condImg[0].setAttribute("src", "images/check.svg");
+      check++;
     }
   }
   count = 0;
@@ -105,6 +79,7 @@ pass.addEventListener("input", function () {
     } else {
       condText[1].style.color = "rgb(22, 199, 161)";
       condImg[1].setAttribute("src", "images/check.svg");
+      check++;
     }
   }
   count = 0;
@@ -125,6 +100,7 @@ pass.addEventListener("input", function () {
     } else {
       condText[2].style.color = "rgb(22, 199, 161)";
       condImg[2].setAttribute("src", "images/check.svg");
+      check++;
     }
   }
   count = 0;
@@ -149,7 +125,63 @@ pass.addEventListener("input", function () {
     } else {
       condText[3].style.color = "rgb(22, 199, 161)";
       condImg[3].setAttribute("src", "images/check.svg");
+      check++;
     }
   }
   count = 0;
+
+  //8 characters condition check.
+  let eightText = document.getElementById("eight");
+  if (passLength == 0) {
+    eightText.style.display = "none";
+  } else if (passLength < 8) {
+    eightText.style.display = "block";
+    eightText.innerHTML = "Password must be at least 8 characters";
+    eightText.style.color = "red";
+  } else {
+    check++;
+    if (check == 5) {
+      eightText.style.display = "block";
+      eightText.innerHTML = "Looks Like a Good Password!";
+      eightText.style.color = "rgb(22,199,167)";
+    } else {
+      eightText.style.display = "block";
+      eightText.innerHTML = "Very Weak Password!";
+      eightText.style.color = "orange";
+    }
+  }
+
+  // This is for validation bar
+  if (passLength == 0) {
+    bar.style.width = "0%";
+  } else if (passLength > 0 && passLength <= 4) {
+    bar.style.width = "33%";
+    bar.style.backgroundColor = "red";
+  } else if (passLength > 4 && passLength <= 7) {
+    bar.style.width = "66%";
+    bar.style.backgroundColor = "orange";
+  } else if (check == 5) {
+    bar.style.width = "100%";
+    bar.style.backgroundColor = "#16c7a1";
+  }
+
+  // Shield and Border color change
+  if (passLength == 0) {
+    root.style.setProperty("--display", "none");
+    pass.style.borderColor = "gray";
+    root.style.setProperty("--border", "2px solid gray");
+    inputImg.style.borderColor = "gray";
+  } else if (check >= 1 && check <= 4) {
+    root.style.setProperty("--display", "inline-block");
+    root.style.setProperty("--shield", "url(images/shield-x.svg)");
+    pass.style.borderColor = "red";
+    root.style.setProperty("--border", "2px solid red");
+    inputImg.style.borderColor = "red";
+  } else if (check == 5) {
+    root.style.setProperty("--display", "inline-block");
+    root.style.setProperty("--shield", "url(images/shield-check.svg)");
+    pass.style.borderColor = "rgb(22,199,167)";
+    root.style.setProperty("--border", "2px solid rgb(22,199,167)");
+    inputImg.style.borderColor = "rgb(22,199,167)";
+  }
 });
