@@ -1,9 +1,12 @@
+// Declaring the variables
+
 let pass = document.getElementById("password");
 let root = document.querySelector(":root");
 let inputImg = document.getElementById("input-img");
 let bar = document.getElementById("bar");
 let char = document.getElementById("char");
 
+// Show Hide js
 inputImg.addEventListener("click", function () {
   if (inputImg.dataset.inputImgSrc == "images/eye-hide.png") {
     inputImg.setAttribute("src", "images/eye-show.png");
@@ -22,6 +25,7 @@ pass.addEventListener("input", function () {
   // This is for characters
   let passLength = pass.value.length;
   char.innerHTML = passLength + " characters";
+
   // This is for validation bar
   if (passLength == 0) {
     bar.style.width = "0%";
@@ -39,44 +43,113 @@ pass.addEventListener("input", function () {
     bar.style.backgroundColor = "#16c7a1";
   }
 
-  // Lowercase, Uppercase, Number, Symbol
-
-  // Creating an array from Password value
-  let arr = [];
-  let character;
-  for (let i = 0; i < passLength; i++) {
-    character = pass.value.slice(i, i + 1);
-    arr.push(character);
-  }
-
-  /*
-  
-  This
-  TAsk 
-  is
-  for 
-  rizwan
-  vai
-
-  */
-
-  // Declaring the variables
-  let check = 0;
-  let count = 0;
-  let i = 0;
-  let j = 0;
-  let eightText = document.getElementById("eight");
-  let condText = document.getElementsByClassName("condition-text");
-
   //8 characters condition check.
+  let eightText = document.getElementById("eight");
   if (passLength == 0) {
     eightText.style.display = "none";
   } else if (passLength >= 8) {
-    check++;
     eightText.style.display = "none";
   } else {
     eightText.style.display = "block";
   }
 
-  //common function for Lowercase, Uppercase, Number condition
+  // Lowercase, Uppercase, Number, Symbol
+
+  // Declaring the variables
+  let i, character;
+  let count = 0;
+  let arr = [];
+  let condText = document.getElementsByClassName("condition-text");
+  let condImg = document.getElementsByClassName("condition-img");
+
+  // Creating an array from Password value
+  for (i = 0; i < passLength; i++) {
+    character = pass.value.slice(i, i + 1);
+    arr.push(character);
+  }
+  console.log(arr);
+
+  // This block is for lowercase letters.
+  if (arr.length == 0) {
+    condText[0].style.color = "#a4bcc3";
+    condImg[0].setAttribute("src", "images/x.svg");
+  } else {
+    for (i = 0; i < passLength; i++) {
+      if (arr[i] >= "a" && arr[i] <= "z") {
+        count++;
+      }
+    }
+    if (count <= 0) {
+      condText[0].style.color = "red";
+      condImg[0].setAttribute("src", "images/x-red.svg");
+    } else {
+      condText[0].style.color = "rgb(22, 199, 161)";
+      condImg[0].setAttribute("src", "images/check.svg");
+    }
+  }
+  count = 0;
+
+  // This block is for Uppercase letters
+  if (arr.length == 0) {
+    condText[1].style.color = "#a4bcc3";
+    condImg[1].setAttribute("src", "images/x.svg");
+  } else {
+    for (i = 0; i < passLength; i++) {
+      if (arr[i] >= "A" && arr[i] <= "Z") {
+        count++;
+      }
+    }
+    if (count <= 0) {
+      condText[1].style.color = "red";
+      condImg[1].setAttribute("src", "images/x-red.svg");
+    } else {
+      condText[1].style.color = "rgb(22, 199, 161)";
+      condImg[1].setAttribute("src", "images/check.svg");
+    }
+  }
+  count = 0;
+
+  // This block is for Numbers
+  if (arr.length == 0) {
+    condText[2].style.color = "#a4bcc3";
+    condImg[2].setAttribute("src", "images/x.svg");
+  } else {
+    for (i = 0; i < passLength; i++) {
+      if (arr[i] >= "0" && arr[i] <= "9") {
+        count++;
+      }
+    }
+    if (count <= 0) {
+      condText[2].style.color = "red";
+      condImg[2].setAttribute("src", "images/x-red.svg");
+    } else {
+      condText[2].style.color = "rgb(22, 199, 161)";
+      condImg[2].setAttribute("src", "images/check.svg");
+    }
+  }
+  count = 0;
+
+  // This block is for Symbols
+  if (arr.length == 0) {
+    condText[3].style.color = "#a4bcc3";
+    condImg[3].setAttribute("src", "images/x.svg");
+  } else {
+    for (i = 0; i < passLength; i++) {
+      if (
+        !(arr[i] >= "a" && arr[i] <= "z") &&
+        !(arr[i] >= "A" && arr[i] <= "Z") &&
+        !(arr[i] >= "0" && arr[i] <= "9")
+      ) {
+        count++;
+      }
+    }
+    if (count <= 0) {
+      condText[3].style.color = "red";
+      condImg[3].setAttribute("src", "images/x-red.svg");
+    } else {
+      condText[3].style.color = "rgb(22, 199, 161)";
+      condImg[3].setAttribute("src", "images/check.svg");
+    }
+  }
+  count = 0;
 });
