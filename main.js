@@ -1,12 +1,5 @@
-// Declaring the variables
-
-let pass = document.getElementById("password");
-let root = document.querySelector(":root");
-let inputImg = document.getElementById("input-img");
-let bar = document.getElementById("bar");
-let char = document.getElementById("char");
-
 // Show Hide js
+let inputImg = document.getElementById("input-img");
 inputImg.addEventListener("click", function () {
   if (inputImg.dataset.inputImgSrc == "images/eye-hide.png") {
     inputImg.setAttribute("src", "images/eye-show.png");
@@ -19,89 +12,53 @@ inputImg.addEventListener("click", function () {
   }
 });
 
+let pass = document.getElementById("password");
+
 pass.addEventListener("input", function () {
   // This is for characters
+  let char = document.getElementById("char");
   let passLength = pass.value.length;
   char.innerHTML = passLength + " characters";
 
-  // Lowercase, Uppercase, Number, Symbol
-
-  // Declaring the variables
-  let i, character;
-  let count = 0;
-  let check = 0;
-  let arr = [];
-  let condText = document.getElementsByClassName("condition-text");
-  let condImg = document.getElementsByClassName("condition-img");
-
   // Creating an array from Password value
+  let i, character;
+  let arr = [];
   for (i = 0; i < passLength; i++) {
     character = pass.value.slice(i, i + 1);
     arr.push(character);
   }
 
-  // This block is for lowercase letters.
-  if (arr.length == 0) {
-    condText[0].style.color = "#a4bcc3";
-    condImg[0].setAttribute("src", "images/x.svg");
-  } else {
-    for (i = 0; i < passLength; i++) {
-      if (arr[i] >= "a" && arr[i] <= "z") {
-        count++;
-      }
-    }
-    if (count <= 0) {
-      condText[0].style.color = "red";
-      condImg[0].setAttribute("src", "images/x-red.svg");
-    } else {
-      condText[0].style.color = "rgb(22, 199, 161)";
-      condImg[0].setAttribute("src", "images/check.svg");
-      check++;
-    }
-  }
-  count = 0;
+  let count = 0;
+  let check = 0;
+  let condText = document.getElementsByClassName("condition-text");
+  let condImg = document.getElementsByClassName("condition-img");
 
-  // This block is for Uppercase letters
-  if (arr.length == 0) {
-    condText[1].style.color = "#a4bcc3";
-    condImg[1].setAttribute("src", "images/x.svg");
-  } else {
-    for (i = 0; i < passLength; i++) {
-      if (arr[i] >= "A" && arr[i] <= "Z") {
-        count++;
+  // Creating common function for lowercase, uppercase and numbers
+  function condition(index, start, end) {
+    if (arr.length == 0) {
+      condText[index].style.color = "#a4bcc3";
+      condImg[index].setAttribute("src", "images/x.svg");
+    } else {
+      for (i = 0; i < passLength; i++) {
+        if (arr[i] >= start && arr[i] <= end) {
+          count++;
+        }
+      }
+      if (count <= 0) {
+        condText[index].style.color = "red";
+        condImg[index].setAttribute("src", "images/x-red.svg");
+      } else {
+        condText[index].style.color = "rgb(22, 199, 161)";
+        condImg[index].setAttribute("src", "images/check.svg");
+        check++;
       }
     }
-    if (count <= 0) {
-      condText[1].style.color = "red";
-      condImg[1].setAttribute("src", "images/x-red.svg");
-    } else {
-      condText[1].style.color = "rgb(22, 199, 161)";
-      condImg[1].setAttribute("src", "images/check.svg");
-      check++;
-    }
+    count = 0;
   }
-  count = 0;
 
-  // This block is for Numbers
-  if (arr.length == 0) {
-    condText[2].style.color = "#a4bcc3";
-    condImg[2].setAttribute("src", "images/x.svg");
-  } else {
-    for (i = 0; i < passLength; i++) {
-      if (arr[i] >= "0" && arr[i] <= "9") {
-        count++;
-      }
-    }
-    if (count <= 0) {
-      condText[2].style.color = "red";
-      condImg[2].setAttribute("src", "images/x-red.svg");
-    } else {
-      condText[2].style.color = "rgb(22, 199, 161)";
-      condImg[2].setAttribute("src", "images/check.svg");
-      check++;
-    }
-  }
-  count = 0;
+  condition(0, "a", "z");
+  condition(1, "A", "Z");
+  condition(2, "0", "9");
 
   // This block is for Symbols
   if (arr.length == 0) {
@@ -150,6 +107,7 @@ pass.addEventListener("input", function () {
   }
 
   // This is for validation bar
+  let bar = document.getElementById("bar");
   if (passLength == 0) {
     bar.style.width = "0%";
   } else if (passLength > 0 && passLength <= 4) {
@@ -164,6 +122,7 @@ pass.addEventListener("input", function () {
   }
 
   // Shield and Border color change
+  let root = document.querySelector(":root");
   if (passLength == 0) {
     root.style.setProperty("--visibility", "hidden");
     pass.style.borderColor = "gray";

@@ -112,6 +112,10 @@ body {
   position: relative;
 }
 
+.input::-webkit-input-placeholder {
+  line-height: normal !important;
+}
+
 .input-img {
   height: 35px;
   margin-left: -2px;
