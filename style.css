@@ -120,6 +120,15 @@ body {
   cursor: pointer;
 }
 
+/* Eight characters text */
+.eight {
+  display: none;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+  color: red;
+}
+
 /* Bars for password strength */
 .bars {
   padding: 10px 15%;
@@ -129,6 +138,10 @@ body {
 .bar {
   width: 0%;
   height: 4px;
+}
+
+.char {
+  margin-top: 10px;
 }
 
 /* Conditions for lowercase, uppercase, number & symbol */
@@ -145,8 +158,9 @@ body {
 
 .condition-group {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  width: 50%;
 }
 
 .condition-img {
