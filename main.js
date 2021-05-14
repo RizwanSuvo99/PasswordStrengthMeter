@@ -20,8 +20,6 @@ inputImg.addEventListener("click", function () {
 });
 
 pass.addEventListener("input", function () {
-  // root.style.setProperty("--display", "block");
-
   // This is for characters
   let passLength = pass.value.length;
   char.innerHTML = passLength + " characters";
@@ -133,19 +131,19 @@ pass.addEventListener("input", function () {
   //8 characters condition check.
   let eightText = document.getElementById("eight");
   if (passLength == 0) {
-    eightText.style.display = "none";
+    eightText.style.visibility = "hidden";
   } else if (passLength < 8) {
-    eightText.style.display = "block";
+    eightText.style.visibility = "visible";
     eightText.innerHTML = "Password must be at least 8 characters";
     eightText.style.color = "red";
   } else {
     check++;
     if (check == 5) {
-      eightText.style.display = "block";
+      eightText.style.visibility = "visible";
       eightText.innerHTML = "Looks Like a Good Password!";
       eightText.style.color = "rgb(22,199,167)";
     } else {
-      eightText.style.display = "block";
+      eightText.style.visibility = "visible";
       eightText.innerHTML = "Very Weak Password!";
       eightText.style.color = "orange";
     }
@@ -167,18 +165,18 @@ pass.addEventListener("input", function () {
 
   // Shield and Border color change
   if (passLength == 0) {
-    root.style.setProperty("--display", "none");
+    root.style.setProperty("--visibility", "hidden");
     pass.style.borderColor = "gray";
     root.style.setProperty("--border", "2px solid gray");
     inputImg.style.borderColor = "gray";
   } else if (check >= 1 && check <= 4) {
-    root.style.setProperty("--display", "inline-block");
+    root.style.setProperty("--visibility", "visible");
     root.style.setProperty("--shield", "url(images/shield-x.svg)");
     pass.style.borderColor = "red";
     root.style.setProperty("--border", "2px solid red");
     inputImg.style.borderColor = "red";
   } else if (check == 5) {
-    root.style.setProperty("--display", "inline-block");
+    root.style.setProperty("--visibility", "visible");
     root.style.setProperty("--shield", "url(images/shield-check.svg)");
     pass.style.borderColor = "rgb(22,199,167)";
     root.style.setProperty("--border", "2px solid rgb(22,199,167)");

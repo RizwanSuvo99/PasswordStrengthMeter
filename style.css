@@ -2,7 +2,7 @@
 
 :root {
   /* styles for input-group::after for js modification*/
-  --display: none;
+  --visibility: hidden;
   --shield: url(images/shield-x.svg);
   --border: 2px solid gray;
 }
@@ -83,7 +83,7 @@ body {
 }
 
 .input-group::after {
-  display: var(--display);
+  visibility: var(--visibility);
   content: "";
   width: 35px;
   height: 35px;
@@ -97,7 +97,7 @@ body {
   border-right: var(--border);
   position: absolute;
   top: 0px;
-  right: 73px;
+  right: 77px;
 }
 
 .input {
@@ -122,7 +122,7 @@ body {
 
 /* Eight characters text */
 .eight {
-  display: none;
+  visibility: hidden;
   margin: 0 auto;
   font-size: 14px;
   text-align: center;
@@ -176,7 +176,8 @@ body {
 
 .logo-img::selection,
 .input-img::selection,
-.condition-img::selection {
+.condition-img::selection,
+.eight::selection {
   background-color: transparent;
 }
 
@@ -206,6 +207,6 @@ body {
   }
 
   .input-group::after {
-    right: 46px;
+    right: 47px;
   }
 }
