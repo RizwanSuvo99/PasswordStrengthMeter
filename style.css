@@ -94,10 +94,9 @@ body {
   background-color: white;
   border-top: var(--border);
   border-bottom: var(--border);
-  border-right: var(--border);
   position: absolute;
   top: 0px;
-  right: 77px;
+  right: 80px;
 }
 
 .input {
@@ -211,6 +210,6 @@ body {
   }
 
   .input-group::after {
-    right: 47px;
+    right: 52px;
   }
 }
